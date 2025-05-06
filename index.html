@@ -9,7 +9,7 @@
   <body>
     <div class="note-app">
       <div class="sidebar">
-        <button class="create-note-button" onclick="createNote()">
+        <button class="create-note-button button" onclick="newNote()">
           Create
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +31,7 @@
       <div class="main-content">
         <div class="title-and-save">
           <div class="save-and-delete-button">
-            <button class="save-button">
+            <button class="save-button button" onclick="createNote()">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -47,7 +47,7 @@
                 />
               </svg>
             </button>
-            <button class="delete-button">
+            <button class="delete-button button" onclick="deleteNote()">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
