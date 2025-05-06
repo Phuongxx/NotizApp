@@ -11,6 +11,14 @@ function createNote(){
 
     const noteEntry = document.createElement("div");
     noteEntry.classList.add("note-entry");
+    // open noteEntry logic
+    noteEntry.addEventListener("click", (displayNote) => {
+        const clickedNote = displayNote.currentTarget;
+        const clickedTitle = clickedNote.querySelector('.note-title').textContent;
+        const clickedContent = clickedNote.querySelector('.note-content').textContent;
+        titleInput.value = clickedTitle;
+        contentInput.value = clickedContent;
+    })
 
     const noteTitle = document.createElement("div");
     noteTitle.classList.add("note-title");
@@ -34,8 +42,5 @@ function createNote(){
 
 }
 
-function addToSidebar(){
-
-}
 // To Do 2. A button that saves the note in a div on the left side and also in LocalStorage
 // To Do 3. A delete Button, that deletes the complete note from the display and also from the localstorage
