@@ -9,7 +9,7 @@
   <body>
     <div class="note-app">
       <div class="sidebar">
-        <button class="create-note-button">
+        <button class="create-note-button" onclick="createNote()">
           Create
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -26,18 +26,7 @@
             />
           </svg>
         </button>
-        <div class="storage-note-list">
-          <div class="note-entry">
-            <div class="note-title">Das ist die Überschrift</div>
-            <div class="note-content">asdasasdasdasdasdd</div>
-            <div class="note-date">1231231</div>
-          </div>
-          <div class="note-entry">
-            <div class="note-title">Das ist die Überschrift</div>
-            <div class="note-content">asdasasdasdasdasdd</div>
-            <div class="note-date">1231231</div>
-          </div>
-        </div>
+        <div class="storage-note-list" id="storageList"></div>
       </div>
       <div class="main-content">
         <div class="title-and-save">
@@ -79,9 +68,10 @@
             type="text"
             class="create-title"
             placeholder="Überschrift eingeben"
+            data-id="createTitle"
           />
         </div>
-        <textarea name="" id="noteText" class="note-textarea"></textarea>
+        <textarea name="textNote" data-id="createNoteText" class="note-textarea"></textarea>
       </div>
     </div>
     <script src="logic.js"></script>
