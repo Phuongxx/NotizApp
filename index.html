@@ -17,7 +17,7 @@
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="create-icon"
+            class="icon"
           >
             <path
               stroke-linecap="round"
@@ -26,16 +26,16 @@
             />
           </svg>
         </button>
-        <div class="storage-note-list" id="storageList"></div>
+        <div class="storage-note-list" id="storageListEl"></div>
       </div>
       <div class="main-content">
         <div class="title-and-save">
           <div class="save-and-delete-button">
-            <button class="save-button button" onclick="createNote()">
+            <button class="save-button button" onclick="saveNote()">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                fill="none"
                 viewBox="0 0 24 24"
+                fill="none"
                 stroke-width="1.5"
                 stroke="currentColor"
                 class="icon"
@@ -71,7 +71,11 @@
             data-id="createTitle"
           />
         </div>
-        <textarea name="textNote" data-id="createNoteText" class="note-textarea"></textarea>
+        <textarea
+          name="textNote"
+          data-id="createNoteText"
+          class="note-textarea"
+        ></textarea>
       </div>
     </div>
     <script src="logic.js"></script>
