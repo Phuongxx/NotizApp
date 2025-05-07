@@ -1,7 +1,10 @@
 * {
   margin: 0;
   padding: 0;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+body {
 }
 
 :root {
@@ -33,6 +36,12 @@
   background-color: var(--color-button);
   border-radius: 1rem;
   border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: #af85ee;
+  cursor: pointer;
 }
 
 .create-note-button {
@@ -56,7 +65,20 @@
   border-radius: 5px;
   background-color: var(--color-button);
   box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.note-entry:not(.selected-note) {
   cursor: pointer;
+}
+
+.note-entry:hover,
+.selected-note {
+  background-color: #af85ee;
 }
 
 .note-title {
@@ -106,9 +128,9 @@
   color: var(--color-icon);
 }
 
-.create-icon {
-  height: 1rem;
-  width: 1rem;
+.create-note-button > .icon {
+  height: 1.5 rem;
+  width: 2rem;
   color: var(--color-icon);
 }
 
@@ -118,25 +140,22 @@
   gap: 1rem;
 }
 
+.create-title,
+.note-textarea {
+  outline: none;
+  background-color: var(--color-title);
+  border: none;
+}
+
 .create-title {
   height: 2rem;
   font-size: 1rem;
-  background-color: var(--color-title);
-  border: none;
   font-weight: bold;
-}
-
-.note-entry {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 5px;
 }
 
 .note-textarea {
   height: 85vh;
-  background-color: var(--color-title);
-  border: none;
+  resize: none;
 }
 
 @media (min-width: 700px) {
