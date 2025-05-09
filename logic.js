@@ -6,8 +6,6 @@ const LOCAL_STORAGE_KEY = "notesAPP";
 let notes = [];
 let currentNoteIndex = null;
 
-// saveNote
-
 // updateList
 
 function updateNoteList() {
@@ -44,8 +42,4 @@ function updateNoteList() {
 
     storageListEl.appendChild(noteEntryEl);
   });
-}
-
-function sortNotes() {
-  notes.sort((noteA, noteB) => new Date(noteB.date) - new Date(noteA.date));
 }
