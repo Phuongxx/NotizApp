@@ -1,30 +1,14 @@
 const titleInput = document.querySelector('[data-id="createTitle"]');
 const contentInput = document.querySelector('[data-id="createNoteText"]');
 const storageListEl = document.getElementById("storageListEl");
+const LOCAL_STORAGE_KEY = "notesAPP";
 
 let notes = [];
 let currentNoteIndex = null;
 
-function saveNote() {
-  if (titleInput.value === "" || contentInput.value === "") {
-    alert("Du musst deiner Notiz einen Titel und Inhalt geben");
-    return;
-  }
+// saveNote
 
-  const newNote = {
-    title: titleInput.value,
-    content: contentInput.value,
-    date: new Date().toISOString(),
-  };
-
-  notes.push(newNote);
-  sortNotes();
-  saveToLocalStorage();
-  updateNoteList();
-
-  titleInput.value = "";
-  contentInput.value = "";
-}
+// updateList
 
 function updateNoteList() {
   storageListEl.innerHTML = "";
@@ -63,39 +47,5 @@ function updateNoteList() {
 }
 
 function sortNotes() {
-  notes.sort((a, b) => new Date(b.date) - new Date(a.date));
+  notes.sort((noteA, noteB) => new Date(noteB.date) - new Date(noteA.date));
 }
-
-function newNote() {
-  titleInput.value = "";
-  contentInput.value = "";
-  currentNoteIndex = null;
-  updateNoteList();
-}
-
-function deleteNote() {
-  if (currentNoteIndex !== null) {
-    notes.splice(currentNoteIndex, 1);
-    currentNoteIndex = null;
-    saveToLocalStorage();
-    updateNoteList();
-
-    titleInput.value = "";
-    contentInput.value = "";
-  }
-}
-
-function saveToLocalStorage() {
-  localStorage.setItem("notesApp", JSON.stringify(notes));
-}
-
-function loadFromLocalStorage() {
-  const storedNotes = localStorage.getItem("notesApp");
-  if (storedNotes) {
-    notes = JSON.parse(storedNotes);
-    sortNotes();
-    updateNoteList();
-  }
-}
-
-loadFromLocalStorage();
