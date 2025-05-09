@@ -28,6 +28,12 @@ function saveNote() {
   contentInput.value = "";
 }
 
+// sortNotes
+
+function sortNotes() {
+  notes.sort((noteA, noteB) => new Date(noteB.date) - new Date(noteA.date));
+}
+
 // deleteNote
 
 function deleteNote() {
@@ -36,6 +42,7 @@ function deleteNote() {
     currentNoteIndex = null;
     saveToLocalStorage();
     updateNoteList();
+    deleteFromLocalStorage();
 
     titleInput.value = "";
     contentInput.value = "";
@@ -45,16 +52,20 @@ function deleteNote() {
 // saveNote in LocalStorage
 
 function saveToLocalStorage() {
-  localStorage.setItem("notesApp", JSON.stringify(notes));
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));
 }
 
 function loadFromLocalStorage() {
-  const storedNotes = localStorage.getItem("notesApp");
+  const storedNotes = localStorage.getItem(LOCAL_STORAGE_KEY);
   if (storedNotes) {
     notes = JSON.parse(storedNotes);
     sortNotes();
     updateNoteList();
   }
+}
+
+function deleteFromLocalStorage() {
+  localStorage.removeItem(LOCAL_STORAGE_KEY);
 }
 
 loadFromLocalStorage();
