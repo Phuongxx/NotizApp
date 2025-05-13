@@ -1,12 +1,3 @@
-// newNote
-
-function newNote() {
-  titleInput.value = "";
-  contentInput.value = "";
-  currentNoteIndex = null;
-  updateNoteList();
-}
-
 // set uniqueID
 function getNextId() {
   const sortedNotes = notes.sort((noteA, noteB) => noteA.id - noteB.id);
