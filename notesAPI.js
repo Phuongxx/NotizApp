@@ -1,3 +1,11 @@
+// newNote
+function newNote() {
+  titleInput.value = "";
+  contentInput.value = "";
+  currentNoteIndex = null;
+  updateNoteList();
+}
+
 // set uniqueID
 function getNextId() {
   const sortedNotes = notes.sort((noteA, noteB) => noteA.id - noteB.id);
@@ -17,15 +25,20 @@ function saveNote() {
     return;
   }
 
-  // create new note
-  const newNote = {
-    title: titleInput.value,
-    content: contentInput.value,
-    id: getNextId(),
-    date: new Date().toISOString(),
-  };
-  notes.push(newNote);
-
+  //  uodateCurrentNote
+  if (currentNoteIndex !== null) {
+    notes[currentNoteIndex].title = titleInput.value;
+    notes[currentNoteIndex].content = contentInput.value;
+    notes[currentNoteIndex].date = new Date().toISOString();
+  } else {
+    const newNote = {
+      title: titleInput.value,
+      content: contentInput.value,
+      id: getNextId(),
+      date: new Date().toISOString(),
+    };
+    notes.push(newNote);
+  }
   sortNotes();
   saveToLocalStorage();
   updateNoteList();
