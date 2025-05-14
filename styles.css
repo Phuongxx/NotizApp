@@ -2,17 +2,15 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Permanent Marker";
-}
-
-body {
 }
 
 :root {
-  --color-button: hsl(254, 100%, 82%);
+  --color-button: hsl(226, 100%, 67%);
   --color-icon: #491992;
-  --color-main: #99c9ff;
-  --color-title: #add1fc;
+  --color-main: #d3e7ff;
+  --color-title: #e5f0ff;
+  --color-font: rgb(224, 255, 238);
+  --color-content-font: rgb(80, 80, 80);
 }
 
 .note-app {
@@ -21,7 +19,7 @@ body {
   width: 100%;
   background-color: var(--color-main);
 }
-/* sidebar */
+
 .sidebar {
   border-right: solid 1px grey;
   padding: 1rem 1rem 0 1rem;
@@ -41,7 +39,7 @@ body {
 }
 
 .button:hover {
-  background-color: #af85ee;
+  background-color: #3c66ee;
   cursor: pointer;
 }
 
@@ -72,6 +70,7 @@ body {
   justify-content: space-between;
   padding: 5px;
   transition: all 0.2s ease-in-out;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .note-entry:not(.selected-note) {
@@ -80,7 +79,7 @@ body {
 
 .note-entry:hover,
 .selected-note {
-  background-color: #af85ee;
+  background-color: #3463ff;
 }
 
 .note-title {
@@ -106,9 +105,12 @@ body {
   font-size: 0.75rem;
 }
 
-/* sidebar */
-
-/* mainContent */
+.note-date,
+.note-title,
+.note-content,
+.button {
+  color: var(--color-font);
+}
 
 .main-content {
   padding: 1rem 1rem;
@@ -147,6 +149,9 @@ body {
   outline: none;
   background-color: var(--color-title);
   border: none;
+  font-family: "Permanent Marker";
+  border-radius: 5px;
+  color: var(--color-content-font);
 }
 
 .create-title {
@@ -155,14 +160,16 @@ body {
   font-weight: bold;
 }
 
+.create-title::placeholder {
+  color: rgb(155, 155, 155);
+}
+
 .note-textarea {
   height: 85vh;
   resize: none;
 }
 
 @media (min-width: 700px) {
-  /* sidebar */
-
   .sidebar {
     width: 400px;
   }
@@ -190,8 +197,6 @@ body {
   .note-date {
     font-size: 1.3rem;
   }
-
-  /* sidebar */
 
   .title-and-save {
     flex-direction: row-reverse;
