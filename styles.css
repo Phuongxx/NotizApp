@@ -5,12 +5,13 @@
 }
 
 :root {
-  --color-button: hsl(226, 100%, 67%);
+  --color-button: hsl(226, 100%, 58%);
   --color-icon: #491992;
   --color-main: #d3e7ff;
   --color-title: #e5f0ff;
   --color-font: rgb(224, 255, 238);
   --color-content-font: rgb(80, 80, 80);
+  --color-hover: #6388ff;
 }
 
 .note-app {
@@ -39,7 +40,7 @@
 }
 
 .button:hover {
-  background-color: #3c66ee;
+  background-color: var(--color-hover);
   cursor: pointer;
 }
 
@@ -79,7 +80,7 @@
 
 .note-entry:hover,
 .selected-note {
-  background-color: #3463ff;
+  background-color: var(--color-hover);
 }
 
 .note-title {
