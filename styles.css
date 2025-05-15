@@ -21,6 +21,11 @@
   background-color: var(--color-main);
 }
 
+.sidebar-top {
+  display: flex;
+  gap: 1rem;
+}
+
 .sidebar {
   border-right: solid 1px grey;
   padding: 1rem 1rem 0 1rem;
@@ -28,7 +33,18 @@
   width: 200px;
 }
 
-.create-note-button,
+.create-note-button {
+  background-color: var(--color-button);
+  border-radius: 1rem;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.icon-sidebar {
+  height: 3rem;
+  width: 2rem;
+}
+
 .save-button,
 .delete-button {
   height: 3rem;
