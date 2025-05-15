@@ -6,7 +6,26 @@ const LOCAL_STORAGE_KEY = "notesAPP";
 let notes = [];
 let currentNoteIndex = null;
 
-// updateList
+function newNote() {
+  titleInput.value = "";
+  contentInput.value = "";
+  currentNoteIndex = null;
+  updateNoteList();
+}
+
+function emptyInput() {
+  if (titleInput.value === "" || contentInput.value === "") {
+    alert("Du musst deiner Notiz einen Titel und Inhalt geben");
+    return false;
+  }
+  return true;
+}
+
+function resetAfterSave() {
+  titleInput.value = "";
+  contentInput.value = "";
+  currentNoteIndex = null;
+}
 
 function updateNoteList() {
   storageListEl.innerHTML = "";
