@@ -6,13 +6,6 @@ const LOCAL_STORAGE_KEY = "notesAPP";
 let notes = [];
 let currentNoteIndex = null;
 
-function newNote() {
-  titleInput.value = "";
-  contentInput.value = "";
-  currentNoteIndex = null;
-  updateNoteList();
-}
-
 function emptyInput() {
   if (titleInput.value === "" || contentInput.value === "") {
     alert("Du musst deiner Notiz einen Titel und Inhalt geben");
@@ -21,10 +14,33 @@ function emptyInput() {
   return true;
 }
 
+function updateNote(selectedNote, title, content) {
+  notes[selectedNote].title = title.value;
+  notes[selectedNote].content = content.value;
+  notes[selectedNote].date = new Date().toISOString();
+}
+
+function newNoteEntry() {
+  return {
+    title: titleInput.value,
+    content: contentInput.value,
+    id: getNextId(),
+    date: new Date().toISOString(),
+  };
+}
+
 function resetAfterSave() {
   titleInput.value = "";
   contentInput.value = "";
   currentNoteIndex = null;
+  updateNoteList();
+}
+
+function newNote() {
+  titleInput.value = "";
+  contentInput.value = "";
+  currentNoteIndex = null;
+  updateNoteList();
 }
 
 function updateNoteList() {

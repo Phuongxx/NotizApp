@@ -1,12 +1,3 @@
-// newNote
-function newNote() {
-  titleInput.value = "";
-  contentInput.value = "";
-  currentNoteIndex = null;
-  updateNoteList();
-}
-
-// set uniqueID
 function getNextId() {
   const sortedNotes = notes.sort((noteA, noteB) => noteA.id - noteB.id);
   let nextId = 1;
@@ -17,43 +8,25 @@ function getNextId() {
   return nextId;
 }
 
-// saveNote
-
 function saveNote() {
-  if (titleInput.value === "" || contentInput.value === "") {
-    alert("Du musst deiner Notiz einen Titel und Inhalt geben");
-    return;
+  if (!emptyInput()) return;
+
+  if (currentNoteIndex !== null) {
+    updateNote(currentNoteIndex, titleInput, contentInput);
+  } else {
+    const newNoteSaved = newNoteEntry();
+    notes.push(newNoteSaved);
   }
 
-  //  uodateCurrentNote
-  if (currentNoteIndex !== null) {
-    notes[currentNoteIndex].title = titleInput.value;
-    notes[currentNoteIndex].content = contentInput.value;
-    notes[currentNoteIndex].date = new Date().toISOString();
-  } else {
-    const newNote = {
-      title: titleInput.value,
-      content: contentInput.value,
-      id: getNextId(),
-      date: new Date().toISOString(),
-    };
-    notes.push(newNote);
-  }
+  resetAfterSave();
   sortNotes();
   saveToLocalStorage();
   updateNoteList();
-
-  titleInput.value = "";
-  contentInput.value = "";
-  currentNoteIndex = null;
 }
-// sortNotes
 
 function sortNotes() {
   notes.sort((noteA, noteB) => new Date(noteB.date) - new Date(noteA.date));
 }
-
-// deleteNotes
 
 function deleteNote() {
   if (currentNoteIndex !== null) {
@@ -64,13 +37,9 @@ function deleteNote() {
 
     saveToLocalStorage();
     updateNoteList();
-
-    titleInput.value = "";
-    contentInput.value = "";
+    newNote();
   }
 }
-
-// saveNote in LocalStorage
 
 function saveToLocalStorage() {
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));
