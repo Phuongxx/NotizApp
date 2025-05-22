@@ -1,12 +1,24 @@
-const titleInput = document.querySelector('[data-id="createTitle"]');
-const contentInput = document.querySelector('[data-id="createNoteText"]');
 const storageListEl = document.getElementById("storageListEl");
+const contentPage = document.querySelector("#contentPageEl");
 const LOCAL_STORAGE_KEY = "notesAPP";
+const mainPageEl = document.querySelector("#mainPage");
+const previousPageEl = null;
 
 let notes = [];
 let currentNoteIndex = null;
 
+function getTitleInput() {
+  return document.querySelector('[data-id="createTitle"]');
+}
+
+function getContentInput() {
+  return document.querySelector('[data-id="createNoteText"]');
+}
+
 function emptyInput() {
+  const titleInput = getTitleInput();
+  const contentInput = getContentInput();
+  if (!titleInput || !contentInput) return false;
   if (titleInput.value === "" || contentInput.value === "") {
     alert("Du musst deiner Notiz einen Titel und Inhalt geben");
     return false;
@@ -14,13 +26,18 @@ function emptyInput() {
   return true;
 }
 
-function updateNote(selectedNote, title, content) {
-  notes[selectedNote].title = title.value;
-  notes[selectedNote].content = content.value;
+function updateNote(selectedNote) {
+  const titleInput = getTitleInput();
+  const contentInput = getContentInput();
+  if (!titleInput || !contentInput) return;
+  notes[selectedNote].title = titleInput.value;
+  notes[selectedNote].content = contentInput.value;
   notes[selectedNote].date = new Date().toISOString();
 }
 
 function newNoteEntry() {
+  const titleInput = getTitleInput();
+  const contentInput = getContentInput();
   return {
     title: titleInput.value,
     content: contentInput.value,
@@ -30,15 +47,92 @@ function newNoteEntry() {
 }
 
 function resetAfterSave() {
-  titleInput.value = "";
-  contentInput.value = "";
+  const titleInput = getTitleInput();
+  const contentInput = getContentInput();
+  if (titleInput) titleInput.value = "";
+  if (contentInput) contentInput.value = "";
   currentNoteIndex = null;
+  previousPage();
   updateNoteList();
 }
 
 function newNote() {
-  titleInput.value = "";
-  contentInput.value = "";
+  currentNoteIndex = null;
+
+  if (previousPageEl === null) {
+    contentPage.innerHTML = `<div class="title-and-save">
+        <div class="save-and-delete-button">
+          <button class="back-button button" onclick="previousPage()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+              />
+            </svg>
+          </button>
+          <button class="save-button button" onclick="saveNote()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0-3-3m3 3 3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"
+              />
+            </svg>
+          </button>
+          <button class="delete-button button" onclick="deleteNote()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m6 4.125 2.25 2.25m0 0 2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"
+              />
+            </svg>
+          </button>
+        </div>
+        <input
+          type="text"
+          class="create-title"
+          placeholder="Überschrift eingeben"
+          data-id="createTitle"
+        />
+      </div>
+      <textarea
+        name="textNote"
+        data-id="createNoteText"
+        class="note-textarea"
+      ></textarea>`;
+
+    mainPageEl.remove();
+    updateNoteList();
+  }
+}
+
+function previousPage() {
+  contentPage.innerHTML = "";
+
+  document.body.appendChild(mainPageEl);
   currentNoteIndex = null;
   updateNoteList();
 }
@@ -70,8 +164,11 @@ function updateNoteList() {
 
     noteEntryEl.addEventListener("click", () => {
       currentNoteIndex = index;
-      titleInput.value = note.title;
-      contentInput.value = note.content;
+      newNote();
+      const titleInput = getTitleInput();
+      const contentInput = getContentInput();
+      if (titleInput) titleInput.value = note.title;
+      if (contentInput) contentInput.value = note.content;
       updateNoteList();
     });
 
