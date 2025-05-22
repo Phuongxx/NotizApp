@@ -56,12 +56,26 @@ function resetAfterSave() {
   updateNoteList();
 }
 
-function newNote() {
-  currentNoteIndex = null;
+function newNote(editIndex = null) {
+  currentNoteIndex = editIndex;
 
   if (previousPageEl === null) {
     contentPage.innerHTML = `<div class="title-and-save">
-        <div class="save-and-delete-button">
+        
+        <input
+          type="text"
+          class="create-title"
+          placeholder="Überschrift eingeben"
+          data-id="createTitle"
+        />
+      </div>
+      <textarea
+        name="textNote"
+        data-id="createNoteText"
+        class="note-textarea"
+      ></textarea>
+
+      <div class="save-and-delete-button">
           <button class="back-button button" onclick="previousPage()">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -110,19 +124,7 @@ function newNote() {
               />
             </svg>
           </button>
-        </div>
-        <input
-          type="text"
-          class="create-title"
-          placeholder="Überschrift eingeben"
-          data-id="createTitle"
-        />
-      </div>
-      <textarea
-        name="textNote"
-        data-id="createNoteText"
-        class="note-textarea"
-      ></textarea>`;
+        </div>`;
 
     mainPageEl.remove();
     updateNoteList();
@@ -131,7 +133,6 @@ function newNote() {
 
 function previousPage() {
   contentPage.innerHTML = "";
-
   document.body.appendChild(mainPageEl);
   currentNoteIndex = null;
   updateNoteList();
@@ -164,7 +165,7 @@ function updateNoteList() {
 
     noteEntryEl.addEventListener("click", () => {
       currentNoteIndex = index;
-      newNote();
+      newNote(index);
       const titleInput = getTitleInput();
       const contentInput = getContentInput();
       if (titleInput) titleInput.value = note.title;
