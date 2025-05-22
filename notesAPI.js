@@ -30,14 +30,10 @@ function sortNotes() {
 
 function deleteNote() {
   if (currentNoteIndex !== null) {
-    const noteToDelete = notes[currentNoteIndex];
-    notes = notes.filter((note) => note.id !== noteToDelete.id);
-
+    notes.splice(currentNoteIndex, 1);
     currentNoteIndex = null;
-
     saveToLocalStorage();
-    updateNoteList();
-    newNote();
+    previousPage();
   }
 }
 
