@@ -11,6 +11,9 @@ function getNextId() {
 function saveNote() {
   if (!emptyInput()) return;
 
+  const titleInput = getTitleInput();
+  const contentInput = getContentInput();
+
   if (currentNoteIndex !== null) {
     updateNote(currentNoteIndex, titleInput, contentInput);
   } else {
