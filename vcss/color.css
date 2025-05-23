@@ -1,0 +1,55 @@
+.settings-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--color-title);#
+}
+
+
+
+.settings-title {
+  font-family: "Permanent Marker";
+  font-size: 2rem;
+  color: var(--color-content-font);
+}
+
+.theme-color-container {
+  height: 40vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
+}
+
+.select-color {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 10px;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.scarlet-red {
+  background-color: #ff4d4d;
+}
+
+.mint-green {
+  background-color: #b3fdb3;
+}
+
+.key-lime {
+  background-color: #4dff4d;
+}
+
+.soft-pink {
+  background-color: #ff4dff;
+}
+
+.light-orange {
+  background-color: #ffb84d;
+}
+
+.ice-blue {
+  background-color: #4dffff;
+}

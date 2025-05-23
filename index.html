@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notiz App</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="vcss/styles.css" />
+    <link rel="stylesheet" href="vcss/color.css" />
   </head>
   <body>
-    <div class="sidebar" id="mainPage">
+    <section class="sidebar" id="mainPage">
       <div class="sidebar-top">
-        <button class="create-note-button button" onclick="themeColor()">
+        <button class="theme-color button" onclick="themeColor()">
           <p class="button-text">Settings</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -50,8 +51,9 @@
         </button>
       </div>
       <div class="storage-note-list" id="storageListEl"></div>
-    </div>
+    </section>
     <div class="main-content" id="contentPageEl"></div>
+    <section class="settings-container" id="themePage"></section>
     <script src="logic.js"></script>
     <script src="notesAPI.js"></script>
   </body>
