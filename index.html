@@ -8,9 +8,17 @@
     <link rel="stylesheet" href="vcss/color.css" />
   </head>
   <body>
-    <section class="sidebar" id="mainPage">
+    <section class="sidebar" id="mainPage" data-id="themeColor">
       <div class="sidebar-top">
+<<<<<<< HEAD
         <button class="theme-color button hover" onclick="themeColorPage()">
+=======
+        <button
+          class="theme-color button"
+          onclick="themeColorPage()"
+          data-id="themeColor"
+        >
+>>>>>>> 5b704f6359e4fb3ff9ff8beffe5c38aecc3e2dea
           <p class="button-text">Settings</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +40,15 @@
             />
           </svg>
         </button>
+<<<<<<< HEAD
         <button class="create-note-button button hover" onclick="newNote()">
+=======
+        <button
+          class="create-note-button button"
+          onclick="newNote()"
+          data-id="themeColor"
+        >
+>>>>>>> 5b704f6359e4fb3ff9ff8beffe5c38aecc3e2dea
           <p class="button-text">Neue Notiz</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +69,11 @@
       <div class="storage-note-list" id="storageListEl"></div>
     </section>
     <div class="main-content" id="contentPageEl"></div>
+<<<<<<< HEAD
     <section class="settings-section" id="themePage"></section>
+=======
+    <section class="settings-container" id="themePage"></section>
+>>>>>>> 5b704f6359e4fb3ff9ff8beffe5c38aecc3e2dea
     <script src="javaScript/logic.js"></script>
     <script src="javaScript/notesAPI.js"></script>
     <script src="javaScript/theme.js"></script>

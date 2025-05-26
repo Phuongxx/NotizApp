@@ -9,11 +9,11 @@ let notes = [];
 let currentNoteIndex = null;
 
 function getTitleInput() {
-  return document.querySelector('[data-id="createTitle"]');
+  return document.querySelector("#createTitle");
 }
 
 function getContentInput() {
-  return document.querySelector('[data-id="createNoteText"]');
+  return document.querySelector("#createNoteText");
 }
 
 function emptyInput() {
@@ -67,17 +67,19 @@ function newNote(editIndex = null) {
           type="text"
           class="create-title"
           placeholder="Überschrift eingeben"
-          data-id="createTitle"
+          id="createTitle"
+          data-id="themeColor"
         />
       </div>
       <textarea
         name="textNote"
-        data-id="createNoteText"
+        id="createNoteText"
         class="note-textarea"
+        data-id="themeColor"
       ></textarea>
 
       <div class="save-and-delete-button">
-          <button class="back-button button" onclick="previousPage()">
+          <button class="back-button button" onclick="previousPage()" data-id="themeColor">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -93,7 +95,7 @@ function newNote(editIndex = null) {
               />
             </svg>
           </button>
-          <button class="save-button button" onclick="saveNote()">
+          <button class="save-button button" onclick="saveNote()" data-id="themeColor">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -109,7 +111,7 @@ function newNote(editIndex = null) {
               />
             </svg>
           </button>
-          <button class="delete-button button" onclick="deleteNote()">
+          <button class="delete-button button" onclick="deleteNote()" data-id="themeColor">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -179,7 +181,7 @@ function updateNoteList() {
   });
 }
 
-function themeColor() {
+function themeColorPage() {
   themePageEl.innerHTML = `<h2 class="settings-title">Theme Color</h2>
       <button class="back-button button" onclick="previousPage()">
             <svg
@@ -198,11 +200,12 @@ function themeColor() {
             </svg>
           </button>
       <div class="theme-color-container">
-        <button class="select-color scarlet-red"onclick="themeColor()"></button>
-        <button class="select-color mint-green" onclick="themeColor()"></button>
-        <button class="select-color key-lime" onclick="themeColor()"></button>
-        <button class="select-color soft-pink" onclick="themeColor()"></button>
-        <button class="select-color light-orange" onclick="themeColor()"></button>
-        <button class="select-color ice-blue" onclick="themeColor()"></button>
+        <button class="select-color scarlet-red"onclick="scarletRed()"></button>
+        <button class="select-color mint-green" onclick="mintGreen()"></button>
+        <button class="select-color key-lime" onclick="keyLime()"></button>
+        <button class="select-color soft-pink" onclick="softPink()"></button>
+        <button class="select-color light-orange" onclick="orange()"></button>
+        <button class="select-color ice-blue" onclick="()"></button>
       </div>`;
+  mainPageEl.remove();
 }

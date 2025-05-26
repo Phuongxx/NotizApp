@@ -1,4 +1,5 @@
 function scarletRed() {
+<<<<<<< HEAD
   const scarletRedButton = document.querySelectorAll(".button");
   scarletRedButton.forEach((element) => {
     element.classList.add("scarlet-red");
@@ -166,4 +167,8 @@ function iceBlue() {
   themePageBlue.classList.add("ice-blue-settings-background");
 
   localStorage.setItem("themeColor", "ice-blue");
+=======
+  const scarletRed = document.querySelectorAll('[data-id="themeColor"]');
+  scarletRed.forEach((element) => element.classList.add("scarlet-red"));
+>>>>>>> 5b704f6359e4fb3ff9ff8beffe5c38aecc3e2dea
 }
