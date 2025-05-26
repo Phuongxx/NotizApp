@@ -3,34 +3,40 @@
   --color-scarlet-button: #ff4d4d;
   --color-scarlet-note-entry: #fdafaf;
   --color-scarlet-hover: #ff8f8f;
+  --color-scarlet-settings-background: #fcd2d2;
 
   --color-mint-textarea: #b7ffb7;
   --color-mint-button: #35bd35;
   --color-mint-note-entry: #b7ffb7;
   --color-mint-hover: #6aff6a;
+  --color-mint-settings-background: #d2fcd2;
 
   --color-violetred-textarea: #ff8383;
   --color-violetred-button: #ff3a75;
   --color-violetred-note-entry: #ffc1c6;
   --color-violetred-hover: #ff6a9f;
+  --color-violetred-settings-background: #fcd2e0;
 
   --color-softpink-textarea: #ffabff;
   --color-softpink-button: #ff4dff;
   --color-softpink-note-entry: #ffabff;
   --color-softpink-hover: #ff8eff;
+  --color-softpink-settings-background: #fcd2f7;
 
   --color-orange-textarea: #fce7af;
   --color-orange-button: #ffb84d;
   --color-orange-note-entry: #fce7af;
   --color-orange-hover: #f5c96b;
+  --color-orange-settings-background: #fdf2d2;
 
   --color-iceblue-textarea: #bdffff;
   --color-iceblue-button: #00dada;
   --color-iceblue-note-entry: #bdffff;
   --color-iceblue-hover: #52fafa;
+  --color-iceblue-settings-background: #d2fdfd;
 }
 
-.settings-container {
+.settings-section {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -76,6 +82,10 @@
   background-color: var(--color-scarlet-hover);
 }
 
+.scarlet-red-settings-background {
+  background-color: var(--color-scarlet-settings-background);
+}
+
 .mint-green {
   background-color: var(--color-mint-button);
 }
@@ -92,6 +102,11 @@
 .mint-green-hover:hover {
   background-color: var(--color-mint-hover);
 }
+
+.mint-green-settings-background {
+  background-color: var(--color-mint-settings-background);
+}
+
 .violet-red {
   background-color: var(--color-violetred-button);
 }
@@ -107,6 +122,10 @@
 
 .violet-red-hover:hover {
   background-color: var(--color-violetred-hover);
+}
+
+.violet-red-settings-background {
+  background-color: var(--color-violetred-settings-background);
 }
 
 .soft-pink {
@@ -126,6 +145,10 @@
   background-color: var(--color-softpink-hover);
 }
 
+.soft-pink-settings-background {
+  background-color: var(--color-softpink-settings-background);
+}
+
 .light-orange {
   background-color: var(--color-orange-button);
 }
@@ -143,6 +166,10 @@
   background-color: var(--color-orange-hover);
 }
 
+.light-orange-settings-background {
+  background-color: var(--color-orange-settings-background);
+}
+
 .ice-blue {
   background-color: var(--color-iceblue-button);
 }
@@ -158,4 +185,8 @@
 
 .ice-blue-hover:hover {
   background-color: var(--color-iceblue-hover);
+}
+
+.ice-blue-settings-background {
+  background-color: var(--color-iceblue-settings-background);
 }
