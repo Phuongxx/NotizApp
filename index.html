@@ -8,9 +8,13 @@
     <link rel="stylesheet" href="vcss/color.css" />
   </head>
   <body>
-    <section class="sidebar" id="mainPage">
+    <section class="sidebar" id="mainPage" data-id="themeColor">
       <div class="sidebar-top">
-        <button class="theme-color button" onclick="themeColor()">
+        <button
+          class="theme-color button"
+          onclick="themeColorPage()"
+          data-id="themeColor"
+        >
           <p class="button-text">Settings</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +36,11 @@
             />
           </svg>
         </button>
-        <button class="create-note-button button" onclick="newNote()">
+        <button
+          class="create-note-button button"
+          onclick="newNote()"
+          data-id="themeColor"
+        >
           <p class="button-text">Neue Notiz</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +62,8 @@
     </section>
     <div class="main-content" id="contentPageEl"></div>
     <section class="settings-container" id="themePage"></section>
-    <script src="logic.js"></script>
-    <script src="notesAPI.js"></script>
+    <script src="javaScript/logic.js"></script>
+    <script src="javaScript/notesAPI.js"></script>
+    <script src="javaScript/theme.js"></script>
   </body>
 </html>
