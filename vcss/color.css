@@ -1,13 +1,43 @@
+:root {
+  --color-scarlet-textarea: #ffb7b7;
+  --color-scarlet-button: #ff4d4d;
+  --color-scarlet-note-entry: #fdafaf;
+  --color-scarlet-hover: #ff8f8f;
+
+  --color-mint-textarea: #b7ffb7;
+  --color-mint-button: #35bd35;
+  --color-mint-note-entry: #b7ffb7;
+  --color-mint-hover: #6aff6a;
+
+  --color-violetred-textarea: #ff8383;
+  --color-violetred-button: #ff3a75;
+  --color-violetred-note-entry: #ffc1c6;
+  --color-violetred-hover: #ff6a9f;
+
+  --color-softpink-textarea: #ffabff;
+  --color-softpink-button: #ff4dff;
+  --color-softpink-note-entry: #ffabff;
+  --color-softpink-hover: #ff8eff;
+
+  --color-orange-textarea: #fce7af;
+  --color-orange-button: #ffb84d;
+  --color-orange-note-entry: #fce7af;
+  --color-orange-hover: #f5c96b;
+
+  --color-iceblue-textarea: #bdffff;
+  --color-iceblue-button: #00dada;
+  --color-iceblue-note-entry: #bdffff;
+  --color-iceblue-hover: #52fafa;
+}
+
 .settings-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  background-color: var(--color-title);#
+  background-color: var(--color-title);
 }
-
-
 
 .settings-title {
   font-family: "Permanent Marker";
@@ -31,25 +61,101 @@
 }
 
 .scarlet-red {
-  background-color: #ff4d4d;
+  background-color: var(--color-scarlet-button);
+}
+
+.scarlet-red-textarea {
+  background-color: var(--color-scarlet-textarea);
+}
+
+.scarlet-red-note-entry {
+  background-color: var(--color-scarlet-note-entry);
+  border-color: #ff4d4d;
+}
+.scarlet-red-hover:hover {
+  background-color: var(--color-scarlet-hover);
 }
 
 .mint-green {
-  background-color: #b3fdb3;
+  background-color: var(--color-mint-button);
 }
 
-.key-lime {
-  background-color: #4dff4d;
+.mint-green-textarea {
+  background-color: var(--color-mint-textarea);
+}
+
+.mint-green-note-entry {
+  background-color: var(--color-mint-note-entry);
+  border-color: #35bd35;
+}
+
+.mint-green-hover:hover {
+  background-color: var(--color-mint-hover);
+}
+.violet-red {
+  background-color: var(--color-violetred-button);
+}
+
+.violet-red-textarea {
+  background-color: var(--color-violetred-textarea);
+}
+
+.violet-red-note-entry {
+  background-color: var(--color-violetred-note-entry);
+  border-color: #ff3a75;
+}
+
+.violet-red-hover:hover {
+  background-color: var(--color-violetred-hover);
 }
 
 .soft-pink {
-  background-color: #ff4dff;
+  background-color: var(--color-softpink-button);
+}
+
+.soft-pink-textarea {
+  background-color: var(--color-softpink-textarea);
+}
+
+.soft-pink-note-entry {
+  background-color: var(--color-softpink-note-entry);
+  border-color: #ff4dff;
+}
+
+.soft-pink-hover:hover {
+  background-color: var(--color-softpink-hover);
 }
 
 .light-orange {
-  background-color: #ffb84d;
+  background-color: var(--color-orange-button);
+}
+
+.light-orange-textarea {
+  background-color: var(--color-orange-textarea);
+}
+
+.light-orange-note-entry {
+  background-color: var(--color-orange-note-entry);
+  border-color: #ffb84d;
+}
+
+.light-orange-hover:hover {
+  background-color: var(--color-orange-hover);
 }
 
 .ice-blue {
-  background-color: #4dffff;
+  background-color: var(--color-iceblue-button);
+}
+
+.ice-blue-textarea {
+  background-color: var(--color-iceblue-textarea);
+}
+
+.ice-blue-note-entry {
+  background-color: var(--color-iceblue-note-entry);
+  border-color: #00dada;
+}
+
+.ice-blue-hover:hover {
+  background-color: var(--color-iceblue-hover);
 }
