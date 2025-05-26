@@ -20,6 +20,11 @@ function scarletRed() {
   scarletRedHover.forEach((element) => {
     element.classList.add("scarlet-red-hover");
   });
+
+  const themePageScarlet = document.querySelector("#themePage");
+  themePageScarlet.classList.add("scarlet-red-settings-background");
+
+  localStorage.setItem("themeColor", "scarlet-red");
 }
 
 function mintGreen() {
@@ -44,6 +49,11 @@ function mintGreen() {
   mintGreenHover.forEach((element) => {
     element.classList.add("mint-green-hover");
   });
+
+  const themePageMint = document.querySelector("#themePage");
+  themePageMint.classList.add("mint-green-settings-background");
+
+  localStorage.setItem("themeColor", "mint-green");
 }
 
 function violetRed() {
@@ -68,6 +78,11 @@ function violetRed() {
   violetRedHover.forEach((element) => {
     element.classList.add("violet-red-hover");
   });
+
+  const themePageViolet = document.querySelector("#themePage");
+  themePageViolet.classList.add("violet-red-settings-background");
+
+  localStorage.setItem("themeColor", "violet-red");
 }
 
 function softPink() {
@@ -90,6 +105,11 @@ function softPink() {
   softPinkHover.forEach((element) => {
     element.classList.add("soft-pink-hover");
   });
+
+  const themePagePink = document.querySelector("#themePage");
+  themePagePink.classList.add("soft-pink-settings-background");
+
+  localStorage.setItem("themeColor", "soft-pink");
 }
 
 function orange() {
@@ -112,6 +132,11 @@ function orange() {
   orangeHover.forEach((element) => {
     element.classList.add("light-orange-hover");
   });
+
+  const themePageOrange = document.querySelector("#themePage");
+  themePageOrange.classList.add("light-orange-settings-background");
+
+  localStorage.setItem("themeColor", "light-orange");
 }
 
 function iceBlue() {
@@ -136,4 +161,9 @@ function iceBlue() {
   iceBlueHover.forEach((element) => {
     element.classList.add("ice-blue-hover");
   });
+
+  const themePageBlue = document.querySelector("#themePage");
+  themePageBlue.classList.add("ice-blue-settings-background");
+
+  localStorage.setItem("themeColor", "ice-blue");
 }
