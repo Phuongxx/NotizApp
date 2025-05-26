@@ -27,6 +27,25 @@ function emptyInput() {
   return true;
 }
 
+function applySavedTheme() {
+  const savedTheme = localStorage.getItem("themeColor");
+  if (!savedTheme) return;
+
+  const buttons = document.querySelectorAll(".button");
+  const textareas = document.querySelectorAll('[data-id="changeTheme"]');
+  const entries = document.querySelectorAll("#noteEntry");
+  const hovers = document.querySelectorAll(".hover");
+  const settingsBackground = document.querySelectorAll("#themePage");
+
+  buttons.forEach((el) => el.classList.add(savedTheme));
+  textareas.forEach((el) => el.classList.add(`${savedTheme}-textarea`));
+  entries.forEach((el) => el.classList.add(`${savedTheme}-note-entry`));
+  hovers.forEach((el) => el.classList.add(`${savedTheme}-hover`));
+  settingsBackground.forEach((el) =>
+    el.classList.add(`${savedTheme}-settings-background`)
+  );
+}
+
 function updateNote(selectedNote) {
   const titleInput = getTitleInput();
   const contentInput = getContentInput();
@@ -60,26 +79,25 @@ function resetAfterSave() {
 function newNote(editIndex = null) {
   currentNoteIndex = editIndex;
 
-  if (previousPageEl === null) {
-    contentPage.innerHTML = `<div class="title-and-save">
+  contentPage.innerHTML = `<div class="title-and-save">
         
         <input
           type="text"
           class="create-title"
           placeholder="Überschrift eingeben"
           id="createTitle"
-          data-id="themeColor"
+          data-id="changeTheme"
         />
       </div>
       <textarea
         name="textNote"
         id="createNoteText"
         class="note-textarea"
-        data-id="themeColor"
+        data-id="changeTheme"
       ></textarea>
 
       <div class="save-and-delete-button">
-          <button class="back-button button" onclick="previousPage()" data-id="themeColor">
+          <button class="back-button button hover" onclick="previousPage()">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -95,7 +113,7 @@ function newNote(editIndex = null) {
               />
             </svg>
           </button>
-          <button class="save-button button" onclick="saveNote()" data-id="themeColor">
+          <button class="save-button button hover" onclick="saveNote()" >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -111,7 +129,7 @@ function newNote(editIndex = null) {
               />
             </svg>
           </button>
-          <button class="delete-button button" onclick="deleteNote()" data-id="themeColor">
+          <button class="delete-button button hover" onclick="deleteNote()">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -129,9 +147,9 @@ function newNote(editIndex = null) {
           </button>
         </div>`;
 
-    mainPageEl.remove();
-    updateNoteList();
-  }
+  mainPageEl.remove();
+  updateNoteList();
+  applySavedTheme();
 }
 
 function previousPage() {
@@ -147,7 +165,8 @@ function updateNoteList() {
 
   notes.forEach((note, index) => {
     const noteEntryEl = document.createElement("div");
-    noteEntryEl.classList.add("note-entry");
+    noteEntryEl.id = "noteEntry";
+    noteEntryEl.classList.add("note-entry", "hover");
 
     if (index === currentNoteIndex) {
       noteEntryEl.classList.add("selected-note");
@@ -179,11 +198,14 @@ function updateNoteList() {
 
     storageListEl.appendChild(noteEntryEl);
   });
+  applySavedTheme();
 }
 
 function themeColorPage() {
-  themePageEl.innerHTML = `<h2 class="settings-title">Theme Color</h2>
-      <button class="back-button button" onclick="previousPage()">
+  themePageEl.innerHTML = `
+      <div class="settings-container">
+      <h2 class="settings-title">Theme Color</h2>
+      <button class="back-button button hover" onclick="previousPage()">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -202,10 +224,12 @@ function themeColorPage() {
       <div class="theme-color-container">
         <button class="select-color scarlet-red"onclick="scarletRed()"></button>
         <button class="select-color mint-green" onclick="mintGreen()"></button>
-        <button class="select-color key-lime" onclick="keyLime()"></button>
+        <button class="select-color violet-red" onclick="violetRed()"></button>
         <button class="select-color soft-pink" onclick="softPink()"></button>
         <button class="select-color light-orange" onclick="orange()"></button>
-        <button class="select-color ice-blue" onclick="()"></button>
+        <button class="select-color ice-blue" onclick="iceBlue()"></button>
+      </div>
       </div>`;
   mainPageEl.remove();
+  applySavedTheme();
 }
