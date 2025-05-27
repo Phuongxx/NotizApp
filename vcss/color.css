@@ -190,3 +190,22 @@
 .ice-blue-settings-background {
   background-color: var(--color-iceblue-settings-background);
 }
+
+.buttonRed {
+  background-color: var(--color-scarlet-button);
+}
+.buttonGreen {
+  background-color: var(--color-mint-button);
+}
+.buttonViolet {
+  background-color: var(--color-violetred-button);
+}
+.buttonPink {
+  background-color: var(--color-softpink-button);
+}
+.buttonOrange {
+  background-color: var(--color-orange-button);
+}
+.buttonBlue {
+  background-color: var(--color-iceblue-button);
+}
