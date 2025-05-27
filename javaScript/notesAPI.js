@@ -9,7 +9,7 @@ function getNextId() {
 }
 
 function saveNote() {
-  if (!emptyInput()) return;
+  if (!isEmptyInput()) return;
 
   const titleInput = getTitleInput();
   const contentInput = getContentInput();
