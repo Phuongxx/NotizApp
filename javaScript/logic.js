@@ -16,7 +16,7 @@ function getContentInput() {
   return document.querySelector("#createNoteText");
 }
 
-function emptyInput() {
+function isEmptyInput() {
   const titleInput = getTitleInput();
   const contentInput = getContentInput();
   if (!titleInput || !contentInput) return false;
@@ -27,23 +27,67 @@ function emptyInput() {
   return true;
 }
 
+function removeAllThemes() {
+  const themeClasses = [
+    "scarlet-red",
+    "mint-green",
+    "violet-red",
+    "soft-pink",
+    "light-orange",
+    "ice-blue",
+    "scarlet-red-textarea",
+    "mint-green-textarea",
+    "violet-red-textarea",
+    "soft-pink-textarea",
+    "light-orange-textarea",
+    "ice-blue-textarea",
+    "scarlet-red-note-entry",
+    "mint-green-note-entry",
+    "violet-red-note-entry",
+    "soft-pink-note-entry",
+    "light-orange-note-entry",
+    "ice-blue-note-entry",
+    "scarlet-red-hover",
+    "mint-green-hover",
+    "violet-red-hover",
+    "soft-pink-hover",
+    "light-orange-hover",
+    "ice-blue-hover",
+    "scarlet-red-settings-background",
+    "mint-green-settings-background",
+    "violet-red-settings-background",
+    "soft-pink-settings-background",
+    "light-orange-settings-background",
+    "ice-blue-settings-background",
+  ];
+  themeClasses.forEach((color) => {
+    document
+      .querySelectorAll("." + color)
+      .forEach((el) => el.classList.remove(color));
+  });
+}
+
+function applyTheme(theme) {
+  removeAllThemes();
+
+  const elements = [
+    { selector: ".button", className: theme },
+    { selector: '[data-id="changeTheme"]', className: `${theme}-textarea` },
+    { selector: "#noteEntry", className: `${theme}-note-entry` },
+    { selector: ".hover", className: `${theme}-hover` },
+    { selector: "#themePage", className: `${theme}-settings-background` },
+  ];
+  elements.forEach(({ selector, className }) => {
+    document
+      .querySelectorAll(selector)
+      .forEach((el) => el.classList.add(className));
+  });
+  localStorage.setItem("themeColor", theme);
+}
+
 function applySavedTheme() {
   const savedTheme = localStorage.getItem("themeColor");
-  if (!savedTheme) return;
-
-  const buttons = document.querySelectorAll(".button");
-  const textareas = document.querySelectorAll('[data-id="changeTheme"]');
-  const entries = document.querySelectorAll("#noteEntry");
-  const hovers = document.querySelectorAll(".hover");
-  const settingsBackground = document.querySelectorAll("#themePage");
-
-  buttons.forEach((el) => el.classList.add(savedTheme));
-  textareas.forEach((el) => el.classList.add(`${savedTheme}-textarea`));
-  entries.forEach((el) => el.classList.add(`${savedTheme}-note-entry`));
-  hovers.forEach((el) => el.classList.add(`${savedTheme}-hover`));
-  settingsBackground.forEach((el) =>
-    el.classList.add(`${savedTheme}-settings-background`)
-  );
+  if (savedTheme) applyTheme(savedTheme);
 }
 
 function updateNote(selectedNote) {
@@ -222,12 +266,12 @@ function themeColorPage() {
             </svg>
           </button>
       <div class="theme-color-container">
-        <button class="select-color scarlet-red"onclick="scarletRed()"></button>
-        <button class="select-color mint-green" onclick="mintGreen()"></button>
-        <button class="select-color violet-red" onclick="violetRed()"></button>
-        <button class="select-color soft-pink" onclick="softPink()"></button>
-        <button class="select-color light-orange" onclick="orange()"></button>
-        <button class="select-color ice-blue" onclick="iceBlue()"></button>
+        <button class="select-color scarlet-red buttonRed"onclick="scarletRed()"></button>
+        <button class="select-color mint-green buttonGreen" onclick="mintGreen()"></button>
+        <button class="select-color violet-red buttonViolet" onclick="violetRed()"></button>
+        <button class="select-color soft-pink buttonPink" onclick="softPink()"></button>
+        <button class="select-color light-orange buttonOrange" onclick="orange()"></button>
+        <button class="select-color ice-blue buttonBlue" onclick="iceBlue()"></button>
       </div>
       </div>`;
   mainPageEl.remove();
